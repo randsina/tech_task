@@ -28,11 +28,11 @@ end
 log_extractor = LogExtractor.new(options)
 log_extractor.read!
 
-page_views = PageView.new(lines: log_extractor.lines)
-page_views.calculate
-logger.puts(page_views.format)
+page_view = PageView.new(lines: log_extractor.lines)
+page_view_output = PageViewFormatter.format(resource: page_view)
+logger.puts(page_view_output)
 logger.puts
 
-unique_page_views = UniquePageView.new(lines: log_extractor.lines)
-unique_page_views.calculate
-logger.puts(unique_page_views.format)
+unique_page_view = UniquePageView.new(lines: log_extractor.lines)
+unique_page_view_output = PageViewFormatter.format(resource: unique_page_view)
+logger.puts(unique_page_view_output)

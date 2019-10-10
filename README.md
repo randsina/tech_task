@@ -23,6 +23,10 @@ e.g.:
 /index 5 unique views
 etc...
 ```
+
+### Assumptions
+A log file has only ipv4 and we assume that `999.999.999.999` is valid too.
+
 ### Installation
 
 Install all dependencies by command:

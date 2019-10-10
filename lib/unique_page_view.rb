@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative './view'
+require_relative './page_view'
 
 class UniquePageView < PageView
   def initialize(lines:)

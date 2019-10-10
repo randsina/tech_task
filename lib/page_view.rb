@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class PageView
-  FORMAT_INDENT = 12
+  attr_reader :context
 
   def initialize(lines:)
     @lines = lines
@@ -12,17 +12,9 @@ class PageView
     @calculate ||= order(lines.transform_values(&:size))
   end
 
-  def format
-    return '' if @calculate.nil?
-
-    calculate.map do |(page, count)|
-      "#{page.ljust(FORMAT_INDENT)} #{count} #{context}"
-    end
-  end
-
   private
 
-  attr_reader :lines, :context
+  attr_reader :lines
 
   def order(lines)
     lines.sort_by { |_key, value| value }
