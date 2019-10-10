@@ -2,9 +2,6 @@
 
 source 'https://rubygems.org'
 
-git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
-
-gem 'pry'
 gem 'rubocop', '~> 0.75.0', require: false
 
 group :test do

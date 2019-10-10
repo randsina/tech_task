@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-require 'pry'
 require 'optparse'
 Dir['./lib/*.rb'].each { |file| require file }
 
@@ -23,7 +22,7 @@ end.parse!
 
 options[:filepath] ||= ARGV.first
 if options[:filepath].nil? || options[:filepath].empty?
-  raise ArgumentError, 'File is missed'
+  raise ArgumentError, 'File is missing'
 end
 
 log_reader = LogReader.new(options)

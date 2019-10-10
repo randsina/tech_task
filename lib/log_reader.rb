@@ -17,7 +17,7 @@ class LogReader
   end
 
   def read!
-    file_exists?
+    check_file_exists!
     IO.foreach(filepath).lazy.each_with_index do |line, index|
       line.strip!
       validate_line(line, index)
@@ -29,7 +29,7 @@ class LogReader
 
   attr_reader :filepath
 
-  def file_exists?
+  def check_file_exists!
     raise IOError, 'File not found' unless File.exist?(filepath)
   end
 
