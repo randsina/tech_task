@@ -2,7 +2,7 @@
 
 require_relative './view'
 
-class UniqueView < View
+class UniquePageView < PageView
   def initialize(lines:)
     super
     @context = 'unique views'

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative '../../lib/unique_view'
+require_relative '../../lib/page_view'
 
-RSpec.describe UniqueView do
+RSpec.describe PageView do
   describe '#initialize' do
     let(:lines) { { 'about' => ['1.1.1.1'] } }
 
@@ -11,7 +11,7 @@ RSpec.describe UniqueView do
     end
 
     it 'has a correct context' do
-      expect(subject.instance_variable_get('@context')).to eq('unique views')
+      expect(subject.instance_variable_get('@context')).to eq('visits')
     end
   end
 
@@ -40,10 +40,10 @@ RSpec.describe UniqueView do
       end
       let(:expected) do
         [
+          ['/about', 5],
           ['/about/2', 5],
-          ['/about', 4],
-          ['/help_page/1', 4],
-          ['/contact', 3],
+          ['/help_page/1', 5],
+          ['/contact', 4],
           ['/index', 1]
         ]
       end
@@ -89,11 +89,11 @@ RSpec.describe UniqueView do
       end
       let(:expected) do
         [
-          '/about/2     5 unique views',
-          '/about       4 unique views',
-          '/help_page/1 4 unique views',
-          '/contact     3 unique views',
-          '/index       1 unique views'
+          '/about       5 visits',
+          '/about/2     5 visits',
+          '/help_page/1 5 visits',
+          '/contact     4 visits',
+          '/index       1 visits'
         ]
       end
 

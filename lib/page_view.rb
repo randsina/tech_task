@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class View
+class PageView
   FORMAT_INDENT = 12
 
   def initialize(lines:)

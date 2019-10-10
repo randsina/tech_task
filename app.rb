@@ -25,14 +25,14 @@ if options[:filepath].nil? || options[:filepath].empty?
   raise ArgumentError, 'File is missing'
 end
 
-log_reader = LogReader.new(options)
-log_reader.read!
+log_extractor = LogExtractor.new(options)
+log_extractor.read!
 
-views = View.new(lines: log_reader.lines)
-views.calculate
-logger.puts(views.format)
+page_views = PageView.new(lines: log_extractor.lines)
+page_views.calculate
+logger.puts(page_views.format)
 logger.puts
 
-unique_views = UniqueView.new(lines: log_reader.lines)
-unique_views.calculate
-logger.puts(unique_views.format)
+unique_page_views = UniquePageView.new(lines: log_extractor.lines)
+unique_page_views.calculate
+logger.puts(unique_page_views.format)

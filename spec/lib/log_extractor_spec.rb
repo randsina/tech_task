@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative '../../lib/log_reader'
+require_relative '../../lib/log_extractor'
 
-RSpec.describe LogReader do
+RSpec.describe LogExtractor do
   describe '#initialize' do
     let(:filepath) { 'webserver.log' }
 

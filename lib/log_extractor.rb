@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class LogReader
+class LogExtractor
   LINE_REGEX = %r{
     ^
     ([a-zA-Z\/\d_]+)                     # simplified path
