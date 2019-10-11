@@ -37,21 +37,21 @@ bundle install
 ### Execution
 
 Ruby script should be executive on your machine. There are two options:
-1. Change file privileges by `chmod +x app.rb` and run like `./app.rb`
-2. Run via interpeter `ruby app.rb`
+1. Change file privileges by `chmod +x runner.rb` and run like `./runner.rb`
+2. Run via interpeter `ruby runner.rb`
 
 A user should run the script with a log file:
 ```
-./app.rb webserver.log
+./runner.rb webserver.log
 ```
 
 Script supports another option with `-f` flag:
 ```
-./app.rb -f webserver.log
+./runner.rb -f webserver.log
 ```
 To learn more type with the flag `-h`:
 ```
-./app.rb -h
+./runner.rb -h
 ```
 
 ### Tests
@@ -64,3 +64,4 @@ rspec
 
 1. Instead of keeping a hash with arrays we can use OpenStruct.
 2. Add tests for different input and output
+3. Improve Regexp to match pages and ip addresses
