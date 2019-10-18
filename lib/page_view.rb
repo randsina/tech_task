@@ -3,9 +3,10 @@
 class PageView
   attr_reader :context
 
-  def initialize(lines:)
+  def initialize(language:, lines:)
     @lines = lines
-    @context = 'visits'
+    @language = language
+    @context = generate_context
   end
 
   def calculate
@@ -19,5 +20,12 @@ class PageView
   def order(lines)
     lines.sort_by { |_key, value| value }
          .reverse
+  end
+
+  def generate_context
+    {
+      'en' => 'visits',
+      'ru' => 'визитов'
+    }[@language]
   end
 end

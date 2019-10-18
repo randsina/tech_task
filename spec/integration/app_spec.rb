@@ -60,5 +60,30 @@ RSpec.describe App do
         expect(logger.read).to match(/Prints this help/)
       end
     end
+
+    context 'with -l argument' do
+      let(:file) do
+        file = Tempfile.new('webserver.log')
+        file.write("/help_page/1 543.910.244.929\n/about/2 802.683.925.780")
+        file.rewind
+        file
+      end
+      let(:expected) do
+        <<~OUTPUT
+          /about/2     1 визитов
+          /help_page/1 1 визитов
+
+          /about/2     1 уникальных визитов
+          /help_page/1 1 уникальных визитов
+        OUTPUT
+      end
+
+      it 'shows a page with russian language' do
+        ARGV.replace ['-l', 'ru', '-f', file.path]
+        described_class.execute!(logger)
+        logger.rewind
+        expect(logger.read).to eq(expected)
+      end
+    end
   end
 end

@@ -7,7 +7,7 @@ RSpec.describe PageView do
     let(:lines) { { 'about' => ['1.1.1.1'] } }
 
     subject do
-      described_class.new(lines: lines)
+      described_class.new(lines: lines, language: 'en')
     end
 
     it 'has a correct context' do
@@ -20,7 +20,7 @@ RSpec.describe PageView do
       let(:lines) { {} }
 
       subject do
-        described_class.new(lines: lines)
+        described_class.new(lines: lines, language: 'en')
       end
 
       it 'comes back an blank result' do
@@ -49,7 +49,7 @@ RSpec.describe PageView do
       end
 
       subject do
-        described_class.new(lines: lines)
+        described_class.new(lines: lines, language: 'en')
       end
 
       it 'has a blank result' do

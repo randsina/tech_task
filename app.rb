@@ -9,15 +9,15 @@ class App
       @@logger = logger
       options = parse_options!
 
-      log_extractor = LogExtractor.new(options)
+      log_extractor = LogExtractor.new(options.slice(:filepath))
       log_extractor.read!
 
-      page_view = PageView.new(lines: log_extractor.lines)
+      page_view = PageView.new(language: options[:language], lines: log_extractor.lines)
       page_view_output = PageViewFormatter.format(resource: page_view)
       logger.puts(page_view_output)
       logger.puts
 
-      unique_page_view = UniquePageView.new(lines: log_extractor.lines)
+      unique_page_view = UniquePageView.new(language: options[:language], lines: log_extractor.lines)
       unique_page_view_output = PageViewFormatter.format(resource: unique_page_view)
       logger.puts(unique_page_view_output)
     end
@@ -42,11 +42,19 @@ class App
           logger.puts opts
           exit
         end
+
+        opts.on('-lLANGUAGE', '--language=LANGUAGE', 'Prints in your language') do |language|
+          options[:language] = language
+        end
       end.parse!
 
       options[:filepath] ||= ARGV.first
       if options[:filepath].nil? || options[:filepath].empty?
         raise ArgumentError, 'File is missing'
+      end
+
+      if options[:language].nil? || options[:language].empty?
+        options[:language] = 'en'
       end
 
       options
